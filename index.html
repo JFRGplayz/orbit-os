@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORBIT OS</title>
+    <link rel="stylesheet" src="style.css">
+  </head>
+  <body>
+    <!-- SECTION: SYSTEM BACKGROUND -->
+    <main id="desktop">
+      
+      <!-- SECTION: DESKTOP WALLPAPER -->
+      <div id="wallpaper"></div>
+
+      <!-- SECTION: DESKTOP ICONS -->
+      <div id="desktop-icons">
+        
+        <button class="desktop-icon" id="terminal-icon">
+          <span class="icon">⌘</span>
+          <span>Terminal</span>
+        </button>
+
+        <button class="desktop-icon" id="files-icon">
+          <span class="icon">▤</span>
+          <span>Files</span>
+        </button>
+        
+      </div>
+
+      <!-- SECTION: WINDOW LAYER -->
+      <div id="window-layer"></div>
+
+      <!-- SECTION: SYSTEM TASKBAR -->
+      <footer id="taskbar">
+
+        <div id="taskbar-left">
+          <button id="start-button">◉ ORBIT</button>
+        </div>
+
+        <div id="taskbar-center">
+            <span id="system-status">SYSTEM ONLINE</span>
+        </div>
+
+        <div id="taskbar-right">
+            <span id="clock">00:00</span>
+        </div>
+        
+      </footer>
+      
+    </main>
+
+    <script src="script.js"></script>
+    
+  </body>
+</html>
