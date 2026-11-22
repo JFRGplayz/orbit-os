@@ -1,0 +1,132 @@
+
+/* SECTION: GLOBAL SETTINGS */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overview: hidden;
+  font-family: "Segoe UI", sans-serif;
+  background: #080b10;
+  color: #e5edf5;
+}
+
+/* SECTION: DESKTOP */
+
+#desktop {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* SECTION: WALLPAPER */
+
+#wallpaper {
+  position: absolute;
+  inset: 0;
+
+  background: 
+    radial-gradient(circle at 70% 30%, #172a40 0%, transparent 45%),
+    linear-gradient(135deg, #080b10, #0c1420, #080b10);
+}
+
+/* SECTION: DESKTOP ICONS */
+
+#desktop-icons {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.desktop-icon {
+  width: 80px;
+  background: transparent;
+  border: none;
+  color: #d8e4f0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  cursor: pointer;
+}
+
+.desktop-icon:hover {
+  color: #8bd5ff;
+}
+
+.desktop-icon .icon {
+  font-size: 32px;
+  background: #172332;
+  border: 1px solid #263b50;
+  border-radius: 12px;
+  width: 55px;
+  height: 55px;
+
+  display: grid;
+  place-items: center;
+}
+
+/* SECTION: WINDOW LAYER */
+
+#window-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* SECTION: TASKBAR */
+
+#taskbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 55px;
+
+  background: #0b1018ee;
+  border-top: 1px solid #263341;
+  backdrop-filter: blur(15px);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 20px;
+}
+
+#taskbar button {
+  background: #172332;
+  border: 1px solid #263b50;
+  color: #8bd5ff;
+
+  padding: 8px 14px;
+  border-radius: 8px;
+
+  cursor: pointer;
+}
+
+#taskbar button:hover {
+  background: #203246;
+}
+
+#system-status {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #78d69b;
+}
+
+#clock {
+  color: #c7d5e4;
+  font-size: 14px;
+}
