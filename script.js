@@ -5,10 +5,10 @@ const clock = document.getElementById("clock");
 function updateClock() {
   const now = new Date();
 
-  clock.textContent = now.ToLocaleTimeString([], {
+  clock.textContent = now.toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit",
-    hour12 = false
+    hour12: false
   });
 }
 
