@@ -81,7 +81,117 @@ body {
 #window-layer {
   position: absolute;
   inset: 0;
+  bottom: 55px;
+  
   pointer-events: none;
+}
+
+/* SECTION: WINDOWS */
+
+.orbit-window {
+  position: absolute;
+
+  width: 600px;
+  height: 400px;
+
+  background: #101720;
+  border: 1px solid #304152;
+  border-radius: 12px;
+
+  box-shadow: 0 20px 60px #0008;
+
+  overflow: hidden;
+
+  pointer-events: auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* SECTION: WINDOW HEADER */
+
+.window-header {
+  height: 42px;
+  min-height: 42px;
+
+  background: #17212d;
+  border-bottom: 1px solid #304152;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 12px;
+
+  cursor: grab;
+  user-select: none;
+}
+
+.window-header:active {
+  cursor: grabbing;
+}
+
+.window-title {
+  font-size: 13px
+  font-weight: 600;
+  color: #d8e6f3;
+}
+
+/* SECTION: WINDOW CONTROLS */
+
+.window-controls {
+  display: flex;
+  gap: 7px;
+}
+
+.window-control {
+  width: 13px;
+  height: 13px;
+
+  border: none;
+  border-radius: 50%;
+
+  cursor: pointer;
+}
+
+.window-minimize {
+  background: #e6b65c;
+}
+
+.window-close {
+  background: #e56868;
+}
+
+/* SECTION: WINDOW CONTENT */
+
+.window-content {
+  flex: 1;
+  overflow: auto;
+  padding: 16px;
+
+  color: #c9d6e4;
+}
+
+/* SECTION: TASKBAR WINDOW BUTTONS */
+
+.taskbar-window {
+  background: #172332;
+  border: 1px solid #304152;
+
+  color: #b8cce0;
+
+  padding: 7px 12px;
+  border-radius: 7px;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.taskbar-window.active {
+  border-color: #65b9f0;
+  color: #8bd5ff;
+  background: #203246;
 }
 
 /* SECTION: TASKBAR */
