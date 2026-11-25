@@ -172,6 +172,43 @@ body {
   color: #c9d6e4;
 }
 
+/* SECTION: WINDOW RESPONSIVENESS */
+
+.orbit-window {
+  max-width: calc(100vw - 30px);
+  max-height: calc(100vh - 85px);
+}
+
+.window-content {
+  min-height: 0;
+}
+
+/* SECTION: WINDOW FOCUS */
+
+.orbit-window {
+  transition: border-color 0.15s ease;
+}
+
+.orbit-window:focus-within {
+  border-color: #466782;
+}
+
+/* SECTION: TASKBAR BUTTON HOVER */
+
+.taskbar-window:hover {
+  background: #26394c;
+}
+
+/* SECTION: DESKTOP SELECTION */
+
+.desktop-icon {
+  user-select: none;
+}
+
+.desktop-icon:active {
+  transform: scale(0.96);
+}
+
 /* SECTION: TASKBAR WINDOW BUTTONS */
 
 .taskbar-window {
