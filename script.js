@@ -76,6 +76,8 @@ ORBIT.createWindow = function (options) {
   windowElement.style.top = 
     `${80 + Object.keys(ORBIT.windows).length * 30}px`;
 
+  windowElement.style.zIndex = ++ORBIT.windowZIndex;
+
   // window header
   const header = document.createElement("span");
   title.className = "window-title";
@@ -114,4 +116,159 @@ ORBIT.createWindow = function (options) {
   taskbarButton.className = "taskbar-window";
   taskbarButton.textContent = options.title || id;
 
-  
+  taskbarWindows.appendChild(taskbarButton);
+
+  // window object
+  const windowObject = {
+    id,
+    element: windowElement,
+    taskbarButton,
+    minimized: false
+  };
+
+  ORBIT.windows[id] = windowObject;
+
+  // events
+  windowElement.addEventListener("mousedown", () => {
+    ORBIT.focusWindow(id);
+  });
+
+  minimizeButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+    ORBIT.minimizeWindow(id);
+  });
+
+  closeButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+    ORBIT.closeWindow(id);
+  });
+
+  taskbarButton.addEventListener("click", () => {
+    ORBIT.restoreWindow(id);
+  });
+
+  // dragging
+  ORBIT.makeDraggable(windowElement, header);
+
+  ORBIT.focusWindow(id);
+  ORBIT.log(`Window created: ${id}`);
+
+  return windowObject;
+};
+
+// SECTION: FOCUS WINDOW
+
+ORBIT.focusWindow = function (id) {
+
+  const win = ORBIT.windows[id];
+  if (!win || win.minimized) return;
+
+  ORBIT.activeWindow = id;
+
+  win.element.style.zIndex = ++ORBIT.windowZIndex;
+
+  Object.values(ORBIT.windows).forEach(window => {
+    window.taskbarButton.classList.remove("active");
+  });
+
+  win.taskbarButton.classList.add("active");
+};
+
+// SECTION: MINIMIZE BUTTON
+
+ORBIT.minimizeWindow = function (id) {
+
+  const win = ORBIT.windows[id];
+  if (!win) return;
+
+  win.element.style.display = "none";
+  win.minimized = true;
+
+  win.taskbarButton.classList.remove("active");
+
+  if (ORBIT.activeWindow === id) {
+    ORBIT.activeWindow = null;
+  }
+
+  ORBIT.log(`Window minimized: ${id}`);
+};
+
+// SECTION: RESTORE WINDOW
+
+ORBIT.restoreWindow = function (id) {
+
+  const win = ORBIT.windows[id];
+  if (!win) return;
+
+  win.element.style.display = "flex";
+  win.minimized = false;
+
+  ORBIT.focusWindow(id);
+
+  ORBIT.log(`Window restored ${id}`);
+};
+
+// SECTION: CLOSE WINDOW
+
+ORBIT.closeWindow = function (id) {
+
+  const win = ORBIT.windows[id];
+  if (!win) return;
+
+  win.element.remove();
+  win.taskbarButton.remove();
+
+  delete ORBIT.windows[id];
+
+  if (ORBIT.activeWindow === id) {
+    ORBIT.activeWindow = null;
+  }
+
+  ORBIT.log(`Window closed: ${id}`);
+};
+
+  // SECTION: WINDOW DRAGGING
+
+ORBIT.makeDraggable = function (windowElement, header) {
+
+  let dragging = false;
+
+  let offsetX = 0;
+  let offsetY = 0;
+
+  header.addEventListener("mousedown", (event) => {
+
+    // ignore clicks on window controls
+    if (event.target.closest(".window-controls")) return;
+
+    dragging = true;
+
+    const rect = windowElement.getBoundingClientRect();
+
+    offsetX = event.clientX - rect.left;
+    offsetY = event.clientY - rect.top;
+
+    ORBIT.focusWindow(windowElement.dataset.windowId);
+  });
+
+  document.addEventListener("mousemove", (event) => {
+
+    if (!dragging) return;
+    const maxX = window.innerWidth - windowElement.offsetWidth;
+    const maxY = window.innerHeight - windowElement.offsetHeight - 55;
+
+    const x = Math.max(0, Math.min(event.clientX - offsetX, maxX));
+    const y = Math.max(0, Math.min(event.clientY - offsetY, maxY));
+
+    windowElement.style.left = `${x}px`;
+    windowElement.style.top = `${y}px`;
+
+    document.addEventListener("mouseup", () => {
+      dragging = false;
+    });
+  };
+
+  // SECTION: CORE INITIALIZATION
+
+  ORBIT.log("Core initialized.")
+  ORBIT.log("Window manager loaded.");
