@@ -240,3 +240,17 @@ body {
   color: #c7d5e4;
   font-size: 14px;
 }
+
+/* SECTION: TASKBAR CENTER */
+
+#taskbar-center {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#taskbar-windows {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
