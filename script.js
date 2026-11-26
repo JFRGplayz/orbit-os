@@ -294,7 +294,9 @@ ORBIT.makeDraggable = function (windowElement, header) {
   
 };
 
-  // SECTION: CORE INITIALIZATION
+// SECTION: WINDOW RESIZING
 
-  ORBIT.log("Core initialized.")
-  ORBIT.log("Window manager loaded.");
+// SECTION: CORE INITIALIZATION
+
+ORBIT.log("Core initialized.")
+ORBIT.log("Window manager loaded.");
