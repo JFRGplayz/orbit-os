@@ -80,14 +80,17 @@ ORBIT.createWindow = function (options) {
 
   // window header
   const header = document.createElement("span");
+  header.className = "window-title";
+
+  const title = document.createElement("span");
   title.className = "window-title";
   title.textContent = options.title || id;
 
   // window controls
   const controls = document.createElement("div");
-  controls.className = "windows-controls";
+  controls.className = "window-controls";
 
-  const minimizeButton = doccument.createElement("button");
+  const minimizeButton = document.createElement("button");
   minimizeButton.className = "window-control window-minimize";
   minimizeButton.title = "Minimize";
 
@@ -267,7 +270,7 @@ ORBIT.makeDraggable = function (windowElement, header) {
       dragging = false;
     });
   };
-
+};
   // SECTION: CORE INITIALIZATION
 
   ORBIT.log("Core initialized.")
