@@ -79,7 +79,7 @@ ORBIT.createWindow = function (options) {
   windowElement.style.zIndex = ++ORBIT.windowZIndex;
 
   // window header
-  const header = document.createElement("span");
+  const header = document.createElement("div");
   header.className = "window-title";
 
   const title = document.createElement("span");
@@ -241,7 +241,6 @@ ORBIT.makeDraggable = function (windowElement, header) {
 
   header.addEventListener("mousedown", (event) => {
 
-    // ignore clicks on window controls
     if (event.target.closest(".window-controls")) return;
 
     dragging = true;
@@ -257,6 +256,7 @@ ORBIT.makeDraggable = function (windowElement, header) {
   document.addEventListener("mousemove", (event) => {
 
     if (!dragging) return;
+    
     const maxX = window.innerWidth - windowElement.offsetWidth;
     const maxY = window.innerHeight - windowElement.offsetHeight - 55;
 
@@ -266,11 +266,14 @@ ORBIT.makeDraggable = function (windowElement, header) {
     windowElement.style.left = `${x}px`;
     windowElement.style.top = `${y}px`;
 
-    document.addEventListener("mouseup", () => {
-      dragging = false;
-    });
-  };
+  });
+  
+  document.addEventListener("mouseup", () => {
+    dragging = false;
+  });
+  
 };
+
   // SECTION: CORE INITIALIZATION
 
   ORBIT.log("Core initialized.")
