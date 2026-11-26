@@ -105,6 +105,10 @@ ORBIT.createWindow = function (options) {
   const content = document.createElement("div");
   content.className = "window-content";
 
+  // resize handle
+  const resizeHandle = document.createElement("div");
+  resizeHandle.className = "window-resize";
+
   if (options.content instanceof HTMLElement) {
     content.appendChild(options.content);
   } else {
@@ -112,6 +116,7 @@ ORBIT.createWindow = function (options) {
   }
 
   windowElement.append(header, content);
+  windowElement.appendChild(resizeHandle);
   windowLayer.appendChild(windowElement);
 
   // taskbar button
