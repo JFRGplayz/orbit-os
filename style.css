@@ -291,3 +291,26 @@ body {
   align-items: center;
   gap: 6px;
 }
+
+/* SECTION: WINDOW RESIZING */
+
+.window-resize {
+  position: absolute;
+  right: 0;
+  botton: 0;
+  width: 14px;
+  height: 14px;
+  cursor: nwse-resize;
+  z-index: 10;
+}
+
+.window-resize::after {
+  content: "";
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid #777;
+  border-bottom: 2px solid #777;
+}
