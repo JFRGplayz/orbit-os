@@ -52,7 +52,7 @@ ORBIT.activeWindow = null;
 ORBIT.windowZIndex = 10;
 
 const windowLayer = document.getElementById("window-layer");
-const taskbarWindows = document.getElementById("taskbar-windows"};
+const taskbarWindows = document.getElementById("taskbar-windows");
 
 // SECTION: CREATE WINDOW
 
