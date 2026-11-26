@@ -80,7 +80,7 @@ ORBIT.createWindow = function (options) {
 
   // window header
   const header = document.createElement("div");
-  header.className = "window-title";
+  header.className = "window-header";
 
   const title = document.createElement("span");
   title.className = "window-title";
@@ -232,7 +232,7 @@ ORBIT.closeWindow = function (id) {
   // focus remaining window
   const remainingWindows = Object.values(ORBIT.windows);
 
-  if (remainingWindows.length > 0 {
+  if (remainingWindows.length > 0) {
     const nextWindow = remainingWindows
     .filter(win => !win.minimized)
     .sort((a, b) =>
