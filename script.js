@@ -228,6 +228,21 @@ ORBIT.closeWindow = function (id) {
   }
 
   ORBIT.log(`Window closed: ${id}`);
+
+  // focus remaining window
+  const remainingWindows = Object.values(ORBIT.windows);
+
+  if (remainingWindows.length > 0 {
+    const nextWindow = remainingWindows
+    .filter(win => !win.minimized)
+    .sort((a, b) =>
+      Number(b.element.style.zIndex) - Number(a.element.style.zIndex)
+    )[0];
+
+    if (nextWindow) {
+      ORBIT.focusWindow(nextWindow.id);
+    }
+  }
 };
 
   // SECTION: WINDOW DRAGGING
